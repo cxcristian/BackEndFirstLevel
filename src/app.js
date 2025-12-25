@@ -7,6 +7,10 @@ const { port } = require('./config/env');
 //inicio de la primera ruta
 
 
+// Middleware para parsear JSON
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 app.get("/", (req,res)=>{
     res.send("Bienvenido a la API de la Libreria");
 })
@@ -14,3 +18,6 @@ app.get("/", (req,res)=>{
 app.listen(port, ()=>{
    console.log(" Servidor escuchando - puerto "+ port)
 })
+
+//rutas
+app.use("/api",require("./routes"));
