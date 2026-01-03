@@ -7,7 +7,14 @@ const { port } = require('./config/env');
 //inicio de la primera ruta
 
 
+//Configuaracion simulada de la base de datos
+
+require('./config/db')
+
 // Middleware para parsear JSON
+// Cargar variables de entorno
+require("dotenv").config();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -21,3 +28,4 @@ app.listen(port, ()=>{
 
 //rutas
 app.use("/api",require("./routes"));
+
